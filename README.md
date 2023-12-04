@@ -81,7 +81,7 @@ Bash scripts is provided. Please ensure the following prerequisites: `.NET8, zip
 1) Clone the repository
 2) Go the the `Scripts`folder
 3) Run `createEntraApp.sh`. This will create a new Entra App registration with the following scopes:
-   ![image-20231116162055850](Docs/Images/2023%2F11%2F16%2F16%2F22%2FScreenshotScopes----1ZFJPXDYC0ZCPGCZJ8HWEWHBZG.png)
+   ![image-20231116162055850](Docs/Images/permissions.png)
    These scopes are required for this sample, where users, groups and memberships are pulled from Microsoft Graph.
 4) Run `provision.sh`. This will deploy required Azure Resources. You're prompted for Resource Group name.
 5) Run `deploy.sh` to build and deploy to Azure.
