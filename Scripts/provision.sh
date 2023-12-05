@@ -59,5 +59,8 @@ if ! [ $( echo "${deploymentResultJSON}" | jq -r .properties.provisioningState )
 fi
 
 put-value      '.functionEndpoint' "$(echo "${deploymentResultJSON}" | jq -r '.properties.outputs.functionEndpoint.value' )" 
+put-value      '.manage.signupUrl' "$(echo "${deploymentResultJSON}" | jq -r '.properties.outputs.signupUrl.value' )" 
+put-value      '.manage.addTenantUrl' "$(echo "${deploymentResultJSON}" | jq -r '.properties.outputs.addTenantUrl.value' )" 
+put-value      '.manage.updateTenant' "$(echo "${deploymentResultJSON}" | jq -r '.properties.outputs.updateTenant.value' )" 
 put-value      '.CosmosSettings.ConnectionString' "$(echo "${deploymentResultJSON}" | jq -r '.properties.outputs.cosmosConnectionString.value' )" 
 # ./deploy.sh

@@ -109,3 +109,6 @@ module setclidentid 'setSecret.bicep' ={
 output functionEndpoint string = azureFunctions_api.outputs.functionAppUrl
 output cosmosConnectionString string = cosmos.outputs.cosmosConnectionString
 output notificationEndpoint string = azureFunctions_api.outputs.notificationEndpoint
+output signupUrl string = azureFunctions_api.outputs.signupUrl
+output addTenantUrl string = azureFunctions_api.outputs.addTenantUrl
+output updateTenant string = azureFunctions_api.outputs.updateTenant

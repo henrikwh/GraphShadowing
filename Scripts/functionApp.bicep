@@ -161,3 +161,6 @@ var functionKey = listKeys('${functionApp.id}/host/default', functionApp.apiVers
 var notificationEndpoint = 'https://${functionApp.properties.defaultHostName}/api/Receive?code=${functionKey}'
 output functionAppUrl string = functionApp.properties.defaultHostName
 output notificationEndpoint string = notificationEndpoint
+output signupUrl string = 'https://${functionApp.properties.defaultHostName}/api/signup/'
+output addTenantUrl string = 'https://${functionApp.properties.defaultHostName}/api/orchestrators/manage/[tenantId]/addtenant?code=${functionKey}'
+output updateTenant string = 'https://${functionApp.properties.defaultHostName}/api/orchestrators/manage/[tenantId]/update?code=${functionKey}'
