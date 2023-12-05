@@ -135,21 +135,21 @@ resource appSettings 'Microsoft.Web/sites/config@2022-09-01' = {
   name: 'appsettings'
   parent: functionApp
   properties: {
-    'FUNCTIONS_WORKER_RUNTIME': functionRuntime
-    'WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED': '1'
-    'FUNCTIONS_EXTENSION_VERSION': '~4'
+    FUNCTIONS_WORKER_RUNTIME: functionRuntime
+    WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED: '1'
+    FUNCTIONS_EXTENSION_VERSION: '~4'
 
-    'AzureWebJobsStorage': '@Microsoft.KeyVault(VaultName=${keyVault.name};SecretName=${storageAccount.name}-${appInternalServiceName}-ConnectionString)'
+    AzureWebJobsStorage: '@Microsoft.KeyVault(VaultName=${keyVault.name};SecretName=${storageAccount.name}-${appInternalServiceName}-ConnectionString)'
 
-    'APPINSIGHTS_INSTRUMENTATIONKEY': appInsightsInstrumentationKey
-    'APPLICATIONINSIGHTS_CONNECTION_STRING': 'InstrumentationKey=${appInsightsInstrumentationKey}'
+    APPINSIGHTS_INSTRUMENTATIONKEY: appInsightsInstrumentationKey
+    APPLICATIONINSIGHTS_CONNECTION_STRING: 'InstrumentationKey=${appInsightsInstrumentationKey}'
 
     'GraphSettings:ClientId': '@Microsoft.KeyVault(VaultName=${keyVault.name};SecretName=GraphSettingsClientId)'
     'GraphSettings:Secret': '@Microsoft.KeyVault(VaultName=${keyVault.name};SecretName=GraphSettingsSecret)'
     'GraphSettings:NotificationUrl': notificationEndpoint
 
-    'KeyVaultName': keyVault.name
-    'KeyVaultUri': keyVault.properties.vaultUri
+    KeyVaultName: keyVault.name
+    KeyVaultUri: keyVault.properties.vaultUri
 
     'AppSettings:ManagedIdentityClientId': clientId
 
@@ -162,5 +162,5 @@ var notificationEndpoint = 'https://${functionApp.properties.defaultHostName}/ap
 output functionAppUrl string = functionApp.properties.defaultHostName
 output notificationEndpoint string = notificationEndpoint
 output signupUrl string = 'https://${functionApp.properties.defaultHostName}/api/signup/'
-output addTenantUrl string = 'https://${functionApp.properties.defaultHostName}/api/orchestrators/manage/[tenantId]/addtenant?code=${functionKey}'
-output updateTenant string = 'https://${functionApp.properties.defaultHostName}/api/orchestrators/manage/[tenantId]/update?code=${functionKey}'
+output addTenantUrl string = 'https://${functionApp.properties.defaultHostName}/api/orchestrators/manage/replaceWithTenantId/addtenant?code=${functionKey}'
+output updateTenant string = 'https://${functionApp.properties.defaultHostName}/api/orchestrators/manage/replaceWithTenantId/update?code=${functionKey}'

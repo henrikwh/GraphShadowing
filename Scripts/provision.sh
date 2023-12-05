@@ -58,9 +58,15 @@ if ! [ $( echo "${deploymentResultJSON}" | jq -r .properties.provisioningState )
     exit 1
 fi
 
+
+tid="$( get-value  ".initConfig.tenantId" | cut -d "." -f 1)"
+echo "Tenant ID: ${tid}."
+
 put-value      '.functionEndpoint' "$(echo "${deploymentResultJSON}" | jq -r '.properties.outputs.functionEndpoint.value' )" 
-put-value      '.manage.signupUrl' "$(echo "${deploymentResultJSON}" | jq -r '.properties.outputs.signupUrl.value' )" 
+put-value      '.manage.signupUrl' "$(echo "${deploymentResultJSON}" | jq -r '.properties.outputs.signupUrl.value' )$tid"  
 put-value      '.manage.addTenantUrl' "$(echo "${deploymentResultJSON}" | jq -r '.properties.outputs.addTenantUrl.value' )" 
 put-value      '.manage.updateTenant' "$(echo "${deploymentResultJSON}" | jq -r '.properties.outputs.updateTenant.value' )" 
 put-value      '.CosmosSettings.ConnectionString' "$(echo "${deploymentResultJSON}" | jq -r '.properties.outputs.cosmosConnectionString.value' )" 
 # ./deploy.sh
+sed  -i "s/replaceWithTenantId/$tid/g" $CONFIG_FILE 
+#> temp.json && cat temp.json

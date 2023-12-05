@@ -48,6 +48,8 @@ echo $apiAppId
 
 sp=$(az ad sp create --id ${apiAppId})
 
+echo "Sleeping for 30 seconds, hoping that the service principal is created. Then grant consent."
+sleep 30
 az ad app permission admin-consent --id $apiAppId
 
 aadTenantId=$(echo $context | jq -r .tenantId)
